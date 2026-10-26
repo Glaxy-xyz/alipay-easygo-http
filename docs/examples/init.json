@@ -1,0 +1,20 @@
+{
+  "url": "47.75.201.251",
+  "port": "1883",
+  "device_no": "PM001",
+  "vehicle_no": "ZY9876",
+  "route_no": "4",
+  "app_id": "1000",
+  "data_path": "/workspace/sdk/data/",
+  "username": "alipayHK",
+  "password": "alipayHK2020!",
+  "ca_file": "/workspace/sdk/certs/ca.pem",
+  "cert_file": "/workspace/sdk/certs/client.pem",
+  "key_file": "/workspace/sdk/certs/client.key",
+  "gps": {
+    "longitude": 114.1694,
+    "latitude": 22.3193,
+    "velocity": 0,
+    "azimuth": 0
+  }
+}

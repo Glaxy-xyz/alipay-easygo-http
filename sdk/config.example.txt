@@ -1,0 +1,12 @@
+url=47.75.201.251
+port=1883
+device_no=PM001
+vehicle_no=ZY9876
+route_no=4
+app_id=1000
+data_path=./
+username=alipayHK
+password=alipayHK2020!
+ca_file=ca.pem
+cert_file=client.pem
+key_file=client.key

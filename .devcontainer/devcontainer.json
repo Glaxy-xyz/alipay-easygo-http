@@ -1,0 +1,37 @@
+{
+  "name": "easygo-http (cross armhf + QEMU run)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8093],
+  "portsAttributes": {
+    "8093": {
+      "label": "easygo-http",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteEnv": {
+    "EASYGO_SDK_DIR": "/workspace/sdk",
+    "CARGO_BUILD_TARGET": "armv7-unknown-linux-gnueabihf",
+    "CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER": "arm-linux-gnueabihf-gcc",
+    "CC_armv7_unknown_linux_gnueabihf": "arm-linux-gnueabihf-gcc",
+    "CXX_armv7_unknown_linux_gnueabihf": "arm-linux-gnueabihf-g++",
+    "CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_RUNNER": "easygo-run-armhf",
+    "EASYGO_HTTP_ADDR": "0.0.0.0:8093",
+    "RUST_LOG": "info",
+    "PATH": "/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "rust-analyzer.cargo.target": "armv7-unknown-linux-gnueabihf"
+      }
+    },
+    "jetbrains": {
+      "settings": {
+        "com.jetbrains.rust.cargo.target": "armv7-unknown-linux-gnueabihf"
+      }
+    }
+  },
+  "postCreateCommand": "mkdir -p .cargo && cp .devcontainer/cargo-config.toml .cargo/config.toml && test -d sdk/lib && test -f sdk/lib/libpos_manager.so || (echo '缺少 sdk/lib（含 libpos_manager.so），请按 README 放入 EasyGo SDK' && exit 1)"
+}

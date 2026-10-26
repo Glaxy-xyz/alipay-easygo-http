@@ -1,0 +1,8 @@
+target/
+.git/
+.idea/
+**/.DS_Store
+sdk/certs/*.pem
+sdk/certs/*.key
+sdk/data/*
+!sdk/data/.gitkeep

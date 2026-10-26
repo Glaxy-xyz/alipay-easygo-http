@@ -1,0 +1,35 @@
+/target/
+.cargo/config.toml
+**/.idea/
+**/.DS_Store
+Cargo.lock
+
+# Runtime / local secrets (copy from EasyGo package into sdk/certs/)
+sdk/certs/*.pem
+sdk/certs/*.key
+!sdk/certs/.gitkeep
+
+# SQLite and offline order data
+sdk/data/*
+!sdk/data/.gitkeep
+/pos_manager.db
+
+# Android SDK 原生库（由 EasyGo 厂商提供，不入库）
+sdk-android/lib/
+
+# Android JNI 编译产物（由 scripts/build-android.sh 生成）
+android/app/src/main/jniLibs/**/*.so
+!android/app/src/main/jniLibs/**/.gitkeep
+
+# Android Gradle 构建产物
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/app/src/main/assets/easygo-linux.zip
+android/app/src/main/assets/easygo-linux/
+android/app/src/arm32/assets/easygo-linux.zip
+android/app/src/arm32/assets/easygo-linux/
+android/app/src/arm64/assets/easygo-linux.zip
+android/app/src/arm64/assets/easygo-linux/
+dist/

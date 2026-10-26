@@ -1,0 +1,38 @@
+[package]
+name = "easygo-http"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# ── crate targets ─────────────────────────────────────────────────────────────
+# cdylib  : Android JNI 共享库 (libeasygo_http.so)
+# rlib    : 供 [[bin]] 链接
+[lib]
+name = "easygo_http"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "easygo-http"
+path = "src/main.rs"
+
+# ── common dependencies ───────────────────────────────────────────────────────
+[dependencies]
+axum = "0.7"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "sync", "time", "signal"] }
+tokio-stream = { version = "0.1", features = ["sync"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# ── Android-only dependencies ─────────────────────────────────────────────────
+[target.'cfg(target_os = "android")'.dependencies]
+jni = { version = "0.21", default-features = false }
+
+[build-dependencies]
+cc = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

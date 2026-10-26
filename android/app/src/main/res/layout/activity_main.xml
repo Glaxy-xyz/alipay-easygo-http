@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="28dp"
+    android:background="#FAFAFA">
+
+    <!-- 标题 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#1A1A2E"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EasyGo POS SDK HTTP 封装服务"
+        android:textSize="13sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="36dp" />
+
+    <!-- 监听地址输入 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="监听地址"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/addrInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="0.0.0.0:8093"
+        android:text="0.0.0.0:8093"
+        android:inputType="textNoSuggestions"
+        android:singleLine="true"
+        android:textSize="15sp"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginBottom="28dp" />
+
+    <!-- 按钮行 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="28dp">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="▶  启动服务"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="■  停止服务"
+            android:enabled="false"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- 状态显示 -->
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="⏹ 服务未启动"
+        android:textSize="14sp"
+        android:textColor="#444444"
+        android:lineSpacingMultiplier="1.5"
+        android:padding="16dp"
+        android:background="#F0F0F0" />
+
+    <!-- 说明 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="APK 内嵌 Linux 版 SDK（qemu）。启动后 POST /init。\n详见 docs/API-TEST.md"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:layout_marginTop="24dp"
+        android:lineSpacingMultiplier="1.5" />
+
+</LinearLayout>

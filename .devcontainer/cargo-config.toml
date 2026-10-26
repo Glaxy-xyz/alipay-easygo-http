@@ -1,0 +1,14 @@
+# Dev Container 内由 postCreate 复制为 .cargo/config.toml，供 RustRover「cargo run」使用。
+# Mac 宿主机不要手动复制此文件（无 armhf 链接器会失败）。
+
+[build]
+target = "armv7-unknown-linux-gnueabihf"
+
+[target.armv7-unknown-linux-gnueabihf]
+linker = "arm-linux-gnueabihf-gcc"
+runner = "easygo-run-armhf"
+
+[env]
+EASYGO_HTTP_ADDR = "0.0.0.0:8093"
+RUST_LOG = "info"
+EASYGO_SDK_DIR = "/workspace/sdk"

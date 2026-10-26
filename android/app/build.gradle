@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.easygo.http'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.easygo.http"
+        minSdk 26          // Android 8.0 — 支持前台服务 foregroundServiceType
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    flavorDimensions "abi"
+    productFlavors {
+        arm32 {
+            dimension "abi"
+            versionNameSuffix "-arm32"
+            buildConfigField "boolean", "USE_QEMU", "false"
+            buildConfigField "String", "RUNTIME_VERSION", "\"16-arm32\""
+        }
+        arm64 {
+            dimension "abi"
+            versionNameSuffix "-arm64"
+            buildConfigField "boolean", "USE_QEMU", "true"
+            buildConfigField "String", "RUNTIME_VERSION", "\"7-arm64\""
+        }
+    }
+
+    androidResources {
+        noCompress += ["zip"]
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach { output ->
+            output.outputFileName = "easygo-http-${variant.flavorName}-${variant.buildType.name}.apk"
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.13.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+}
